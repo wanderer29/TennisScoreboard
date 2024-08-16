@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\View\View;
+use Nette\Utils\Html;
 
 class NewMatchController extends Controller
 {
-    public function create() : string
+    public function index() : View
     {
-        return 'New Match Created';
+        return view('new_match_page');
     }
 }

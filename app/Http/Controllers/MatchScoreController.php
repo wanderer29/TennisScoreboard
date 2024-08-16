@@ -10,7 +10,8 @@ class MatchScoreController extends Controller
 {
     public function index()
     {
-        $player = Player::find(1);
-        dump($player);
+        $player = Player::all();
+//        dump($player);
+        return view('new_match_page');
     }
 }

@@ -5,10 +5,10 @@ use App\Http\Controllers\NewMatchController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home_page');
 });
 
-Route::get('/new-match', [NewMatchController::class, 'create']);
+Route::get('/new-match', [NewMatchController::class, 'index']);
 
 Route::get('/match-score', [MatchScoreController::class, 'index']);
 
