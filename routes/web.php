@@ -13,7 +13,5 @@ Route::get('/new-match', [NewMatchController::class, 'index']);
 Route::get('/match-score', [MatchScoreController::class, 'index']);
 
 Route::get('/matches', function () {
-    return "matches";
+    return view('played_matches_page');
 });
-
-

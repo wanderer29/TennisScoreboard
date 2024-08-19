@@ -11,13 +11,21 @@
 <header>
     New match
 </header>
-<div>
-    <button onclick="window.location.href='new-match'">
-        New match page
-    </button>
-    <button onclick="window.location.href='matches'">
-        Played matches page
-    </button>
+<div class="form-container">
+    <form>
+        <label for="name1">Name of the first player</label>
+        <label for="name1">(example: Jacob S.P.)</label>
+        <input type="text" id="name1" name="name1" required>
+
+        <label for="name1">Name of the second player</label>
+        <input type="text" id="name2" name="name2" required>
+        <button onclick="window.location.href='/'">
+            Home page
+        </button>
+        <button onclick="window.location.href='match-score'">
+            Start game
+        </button>
+    </form>
 </div>
 <footer>
     author: https://github.com/wanderer29

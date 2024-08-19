@@ -12,6 +12,6 @@ class MatchScoreController extends Controller
     {
         $player = Player::all();
 //        dump($player);
-        return view('new_match_page');
+        return view('match_score_page');
     }
 }
