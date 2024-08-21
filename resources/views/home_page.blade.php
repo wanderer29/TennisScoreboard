@@ -11,7 +11,7 @@
 <header>
     Home page
 </header>
-<div>
+<div class="main">
     <button onclick="window.location.href='new-match'">
         New match page
     </button>

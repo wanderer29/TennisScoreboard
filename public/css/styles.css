@@ -3,6 +3,7 @@
     padding: 0;
 }
 
+/*Header*/
 header {
     height: 15vh;
     background-color: #1a1a2e;
@@ -12,8 +13,11 @@ header {
     justify-content: center;
     align-items: center;
 }
+/*End Header*/
 
-div {
+
+/*Main*/
+.main {
     height: 70vh;
     display: flex;
     justify-content: center;
@@ -21,7 +25,7 @@ div {
     gap: 70px;
 }
 
-div button {
+button {
     height: 90px;
     width: 230px;
     background-color: #1a1a2e;
@@ -29,7 +33,9 @@ div button {
     border-radius: 20px;
     font-size: 18px;
 }
+/*End main*/
 
+/*New match page styles*/
 .form-container {
     text-align: center;
     height: 70vh;
@@ -58,6 +64,7 @@ div button {
     font-size: 18px;
     margin: 5px;
 }
+
 .form-container label {
     font-weight: bold;
 
@@ -67,7 +74,58 @@ div button {
 .form-container input {
     margin-bottom: 10px;
 }
+/*End new match page styles*/
 
+/*Played matches page styles*/
+.games {
+    height: 70vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.gamesTitle {
+    border-bottom: solid;
+    display: flex;
+    flex-direction: row;
+    height: 5vh;
+    width: 50vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.gamesTitle div {
+    display: flex;
+    width: 33vh;
+    height: 5vh;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-right: none;
+}
+
+.game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    width: 50vh;
+    border-bottom: solid;
+
+}
+
+.gameParameter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: none;
+    height: 5vh;
+    width: 33vh;
+}
+/*End played matches page styles*/
+
+/*Footer*/
 footer {
     height: 15vh;
     background-color: #1a1a2e;
@@ -78,3 +136,4 @@ footer {
     align-items: center;
 }
 
+/*End footer*/

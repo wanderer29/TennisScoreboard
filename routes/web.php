@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MatchScoreController;
 use App\Http\Controllers\NewMatchController;
+use App\Http\Controllers\PlayedMatchesContoller;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,6 +13,4 @@ Route::get('/new-match', [NewMatchController::class, 'index']);
 
 Route::get('/match-score', [MatchScoreController::class, 'index']);
 
-Route::get('/matches', function () {
-    return view('played_matches_page');
-});
+Route::get('/matches', [PlayedMatchesContoller::class, 'index']);

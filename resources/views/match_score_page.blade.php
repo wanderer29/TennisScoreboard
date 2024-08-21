@@ -11,7 +11,7 @@
 <header>
     Match score page
 </header>
-<div>
+<div class="main">
 
     <button onclick="window.location.href='/'">
         Main page

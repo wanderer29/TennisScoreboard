@@ -11,7 +11,28 @@
 <header>
     Played matches page
 </header>
-<div>
+<div class="games">
+    <div class="gamesTitle">
+        <div>Player 1</div>
+        <div>Player 2</div>
+        <div>Winner</div>
+    </div>
+
+
+    @foreach($games as $game)
+        <div class="game">
+            <div class="gameParameter">
+                {{ $game->getPlayer1Name->name}}
+            </div>
+            <div class="gameParameter">
+                {{ $game->getPlayer2Name->name }}
+            </div>
+            <div class="gameParameter">
+                {{ $game->getWinnerName->name }}
+            </div>
+        </div>
+
+    @endforeach
     <button onclick="window.location.href='/'">
         Main page
     </button>
