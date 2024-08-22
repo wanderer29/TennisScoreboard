@@ -19,10 +19,10 @@
 
         <label for="name1">Name of the second player</label>
         <input type="text" id="name2" name="name2" required>
-        <button onclick="window.location.href='/'">
+        <button onclick="window.location.href='{{ route('home_page') }}'">
             Home page
         </button>
-        <button onclick="window.location.href='match-score'">
+        <button onclick="window.location.href='{{ route('new-match.create') }}'">
             Start game
         </button>
     </form>

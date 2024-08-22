@@ -16,6 +16,11 @@ class NewMatchController extends Controller
         return view('new_match_page');
     }
 
+    public function create(): View
+    {
+        return view('new_match_page');
+    }
+
     public function isPlayerExsits(Player $player): bool
     {
         $players = Player::all();
@@ -24,7 +29,6 @@ class NewMatchController extends Controller
         }
         return false;
     }
-
 
 
     public function createGame(int $player1ID, int $player2ID, int $winnerID): null

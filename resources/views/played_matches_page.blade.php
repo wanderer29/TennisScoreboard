@@ -33,7 +33,7 @@
         </div>
 
     @endforeach
-    <button onclick="window.location.href='/'">
+    <button onclick="window.location.href='{{ route('home_page') }}'">
         Main page
     </button>
 </div>

@@ -12,10 +12,10 @@
     Home page
 </header>
 <div class="main">
-    <button onclick="window.location.href='new-match'">
+    <button onclick="window.location.href='{{ route('new-match.index') }}'">
         New match page
     </button>
-    <button onclick="window.location.href='matches'">
+    <button onclick="window.location.href='{{ route('matches.index') }}'">
         Played matches page
     </button>
 </div>
