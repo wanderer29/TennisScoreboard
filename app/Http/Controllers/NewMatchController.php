@@ -16,9 +16,14 @@ class NewMatchController extends Controller
         return view('new_match_page');
     }
 
-    public function create(): View
+    public function create(Request $request): View
     {
-        return view('new_match_page');
+        $name1 = $request->input('name1');
+        $name2 = $request->input('name2');
+
+        $result = ($name1 === $name2) ? 'Names the same' : 'Names are different';
+
+        return view('match_score_page', ['result' => $result]);
     }
 
     public function isPlayerExsits(Player $player): bool
