@@ -6,24 +6,33 @@ namespace App\Http\Controllers;
 use App\Models\Game;
 use App\Models\Player;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 use Nette\Utils\Html;
 
 class NewMatchController extends Controller
 {
-    public function index(): View
+    public function create(): View
     {
         return view('new_match_page');
     }
 
-    public function create(Request $request): View
+    public function store(): View
     {
-        $name1 = $request->input('name1');
-        $name2 = $request->input('name2');
+        $data = request()->validate([
+            'name1' => 'string',
+            'name2' => 'string',
+        ]);
 
-        $result = ($name1 === $name2) ? 'Names the same' : 'Names are different';
+        if ($data['name1'] == $data['name2']) {
+            echo "Names must be different";
+            return view('new_match_page');
+        } else {
+            $players = [$data['name1'], $data['name2']];
+            Cache::put('current_match', $players);
 
-        return view('match_score_page', ['result' => $result]);
+            return view('match_score_page');
+        }
     }
 
     public function isPlayerExsits(Player $player): bool

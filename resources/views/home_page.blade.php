@@ -12,7 +12,7 @@
     Home page
 </header>
 <div class="main">
-    <button onclick="window.location.href='{{ route('new-match.index') }}'">
+    <button onclick="window.location.href='{{ route('new-matches.create') }}'">
         New match page
     </button>
     <button onclick="window.location.href='{{ route('matches.index') }}'">

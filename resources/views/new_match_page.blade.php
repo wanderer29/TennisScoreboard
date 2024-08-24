@@ -12,20 +12,25 @@
     New match
 </header>
 <div class="form-container">
-    <form>
+    <form action="{{ route('new-matches.store') }}" method="POST">
+        @csrf
         <label for="name1">Name of the first player</label>
         <label for="name1">(example: Jacob S.P.)</label>
         <input type="text" id="name1" name="name1" required>
 
         <label for="name1">Name of the second player</label>
         <input type="text" id="name2" name="name2" required>
-        <button onclick="window.location.href='{{ route('home_page') }}'">
-            Home page
-        </button>
-        <button onclick="window.location.href='{{ route('new-match.create') }}'">
+
+        <button type="submit">
             Start game
         </button>
     </form>
+    <button onclick="window.location.href='{{ route('home_page') }}'">
+        Home page
+    </button>
+    @if (isset($result))
+        <p>{{$result}}</p>
+    @endif
 </div>
 <footer>
     author: https://github.com/wanderer29
