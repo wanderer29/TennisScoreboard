@@ -29,16 +29,23 @@ class NewMatchController extends Controller
             return view('new_match_page');
         } else {
             $currentMatch = [
-                'player1' => $data['name1'],
-                'player2' => $data['name2'],
-                'scorePlayer1' => 0,
-                'scorePlayer2' => 0,
+                'player1' => [
+                    'name' => $data['name1'],
+                    'sets' => 0,
+                    'games' => 0,
+                    'points' => 0,
+                ],
+                'player2' => [
+                    'name' => $data['name2'],
+                    'sets' => 0,
+                    'games' => 0,
+                    'points' => 0,
+                ],
             ];
 
             Cache::put('current_match', $currentMatch);
 
-
-            return view('match_score_page');
+            return view('match_score_page', ['match' => $currentMatch]);
         }
     }
 

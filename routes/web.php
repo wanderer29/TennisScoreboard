@@ -14,8 +14,7 @@ Route::get('/new-match/create', [NewMatchController::class, 'create'])->name('ne
 Route::post('/new-match', [NewMatchController::class, 'store'])->name('new-match.store');
 
 Route::get('/match-score', [MatchScoreController::class, 'index'])->name('match-score.index');
+Route::post('/match-score', [MatchScoreController::class, 'store'])->name('match-score.store');
 
 Route::get('/matches', [PlayedMatchesContoller::class, 'index'])->name('matches.index');
-
-
 

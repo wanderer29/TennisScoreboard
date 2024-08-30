@@ -24,29 +24,33 @@
             </thead>
             <tbody>
             <tr>
-                <td>Player 1</td>
-                <td id="player1-sets">0</td>
-                <td id="player1-games">0</td>
-                <td id="player1-points">0</td>
+                <td>{{ $match['player1']['name'] }}</td>
+                <td id="player1-sets">{{ $match['player1']['sets'] }}</td>
+                <td id="player1-games">{{ $match['player1']['games'] }}</td>
+                <td id="player1-points">{{ $match['player1']['points'] }}</td>
             </tr>
             <tr>
-                <td>Player 2</td>
-                <td id="player2-sets">0</td>
-                <td id="player2-games">0</td>
-                <td id="player2-points">0</td>
+                <td>{{ $match['player2']['name'] }}</td>
+                <td id="player2-sets">{{ $match['player2']['sets'] }}</td>
+                <td id="player2-games">{{ $match['player2']['games'] }}</td>
+                <td id="player2-points">{{ $match['player2']['points'] }}</td>
             </tr>
             </tbody>
         </table>
 
-        <form action="">
-            <div>
-                <button type="button" formaction="/point/player1">
-                    Point to Player 1
-                </button>
-                <button type="button" formaction="/point/player2">
-                    Point to Player 2
-                </button>
-            </div>
+        <form method="POST" action="/match-score">
+            @csrf
+            <input type="hidden" name="winner" value="player1">
+            <button type="submit">
+                Point to Player 1
+            </button>
+        </form>
+        <form method="POST" action="/match-score">
+            @csrf
+            <input type="hidden" name="winner" value="player2">
+            <button type="submit">
+                Point to Player 2
+            </button>
         </form>
     </div>
 </div>
