@@ -12,7 +12,7 @@
     New match
 </header>
 <div class="form-container">
-    <form action="{{ route('new-matches.store') }}" method="POST">
+    <form action="{{ route('new-match.store') }}" method="POST">
         @csrf
         <label for="name1">Name of the first player</label>
         <label for="name1">(example: Jacob S.P.)</label>

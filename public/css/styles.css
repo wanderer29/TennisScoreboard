@@ -76,6 +76,46 @@ button {
 }
 /*End new match page styles*/
 
+/*Match score page styles*/
+.matchScore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.scoreboard {
+    text-align: center;
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.scoreboard table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.scoreboard th,
+.scoreboard td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.matchScoreButton {
+    height: 40px;
+    width: 130px;
+    background-color: #1a1a2e;
+    color: #FFFFFF;
+    border-radius: 20px;
+    font-size: 18px;
+    margin: 5px;
+}
+/*End match score page styles*/
+
 /*Played matches page styles*/
 .games {
     height: 70vh;

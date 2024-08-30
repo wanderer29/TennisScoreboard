@@ -28,8 +28,15 @@ class NewMatchController extends Controller
             echo "Names must be different";
             return view('new_match_page');
         } else {
-            $players = [$data['name1'], $data['name2']];
-            Cache::put('current_match', $players);
+            $currentMatch = [
+                'player1' => $data['name1'],
+                'player2' => $data['name2'],
+                'scorePlayer1' => 0,
+                'scorePlayer2' => 0,
+            ];
+
+            Cache::put('current_match', $currentMatch);
+
 
             return view('match_score_page');
         }

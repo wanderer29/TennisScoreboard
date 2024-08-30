@@ -9,11 +9,11 @@ Route::get('/', function () {
     return view('home_page');
 })->name('home_page');
 
-Route::get('/new-matches/create', [NewMatchController::class, 'create'])->name('new-matches.create');
+Route::get('/new-match/create', [NewMatchController::class, 'create'])->name('new-match.create');
 
-Route::post('/new-matches', [NewMatchController::class, 'store'])->name('new-matches.store');
+Route::post('/new-match', [NewMatchController::class, 'store'])->name('new-match.store');
 
-Route::get('/matches-score', [MatchScoreController::class, 'index'])->name('match-scores.index');
+Route::get('/match-score', [MatchScoreController::class, 'index'])->name('match-score.index');
 
 Route::get('/matches', [PlayedMatchesContoller::class, 'index'])->name('matches.index');
 
