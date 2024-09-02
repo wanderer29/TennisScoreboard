@@ -15,7 +15,7 @@
     <form action="{{ route('new-match.store') }}" method="POST">
         @csrf
         <label for="name1">Name of the first player</label>
-        <label for="name1">(example: Jacob <S></S>.P.)</label>
+        <label for="name1">(example: Jacob S.P.)</label>
         <input type="text" id="name1" name="name1" required>
 
         <label for="name1">Name of the second player</label>
@@ -24,6 +24,9 @@
         <button type="submit">
             Start game
         </button>
+        @if (isset($error))
+            <p style="color:red">{{ $error }}</p>
+        @endif
     </form>
     <button onclick="window.location.href='{{ route('home_page') }}'">
         Home page

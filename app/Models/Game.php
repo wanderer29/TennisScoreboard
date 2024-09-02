@@ -13,17 +13,17 @@ class Game extends Model
     protected $table = 'games';
     protected $guarded = [];
 
-    public function getPlayer1Name() : BelongsTo
+    public function getPlayer1Name(): BelongsTo
     {
         return $this->belongsTo(Player::class, 'player1');
     }
 
-    public function getPlayer2Name() : BelongsTo
+    public function getPlayer2Name(): BelongsTo
     {
         return $this->belongsTo(Player::class, 'player2');
     }
 
-    public function getWinnerName() : BelongsTo
+    public function getWinnerName(): BelongsTo
     {
         return $this->belongsTo(Player::class, 'winner');
     }

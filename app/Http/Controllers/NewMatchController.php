@@ -25,8 +25,7 @@ class NewMatchController extends Controller
         ]);
 
         if ($data['name1'] == $data['name2']) {
-            echo "Names must be different";
-            return view('new_match_page');
+            return view('new_match_page', ['error' => 'Names must be different']);
         } else {
             $currentMatch = [
                 'player1' => [
@@ -66,7 +65,6 @@ class NewMatchController extends Controller
             'player2' => $player2ID,
             'winner' => $winnerID,
         ]);
-        dd('created');
     }
 
     public function createPlayer(string $name): void

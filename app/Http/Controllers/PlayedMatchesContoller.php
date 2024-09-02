@@ -12,7 +12,8 @@ class PlayedMatchesContoller extends Controller
     public function index()
     {
 //        $games = Game::all();
-        $games = Game::with(['getPlayer1Name', 'getPlayer2Name', 'getWinnerName'])->get();
+//        $games = Game::with(['getPlayer1Name', 'getPlayer2Name', 'getWinnerName'])->get();
+        $games = Game::with(['getPlayer1Name', 'getPlayer2Name', 'getWinnerName'])->paginate(5);
 
         return view('played_matches_page', compact('games'));
     }

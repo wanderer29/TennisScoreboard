@@ -163,6 +163,11 @@ button {
     height: 5vh;
     width: 33vh;
 }
+
+.pagination {
+    margin: 20px;
+}
+
 /*End played matches page styles*/
 
 /*Footer*/

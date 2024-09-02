@@ -16,17 +16,18 @@ class MatchScoreController extends Controller
         $match = Cache::get('current_match');
     }
 
-    public function store(Request $request) : View
+    public function store(Request $request): View
     {
         $match = Cache::get('current_match');
 
-        $match = json_decode($match,true);
+        if (!is_array($match)){
+            $match = json_decode($match, true);
+        }
 
         $winner = $request->input('winner');
 
         $match[$winner]['points']++;
 
-        // Логика для обновления Games и Sets в зависимости от правил тенниса
         if ($match[$winner]['points'] >= 4 && $match[$winner]['points'] - $match[$this->getOpponent($winner)]['points'] >= 2) {
             $match[$winner]['games']++;
             $match[$winner]['points'] = 0;
@@ -39,22 +40,44 @@ class MatchScoreController extends Controller
             $match[$this->getOpponent($winner)]['games'] = 0;
         }
 
-        // Проверяем, закончился ли матч
         if ($match[$winner]['sets'] >= 3) {
-            $this->saveMatchToDatabase($match);
-            Cache::del('current_match');
+            $this->saveMatchToDatabase($match, $winner);
+            Cache::forget('current_match');
 
-            return view('match.final', ['match' => $match]);
+            return view('home_page');
         }
 
-        // Сохраняем обновленный матч в Redis
         Cache::set('current_match', json_encode($match));
 
         return view('match_score_page', ['match' => $match]);
     }
 
-    private function getOpponent($player) : string
+    private function getOpponent($player): string
     {
-        return $player === 'player1' ? 'player2' : 'player1';
+        return $player == 'player1' ? 'player2' : 'player1';
+    }
+
+    private function saveMatchToDatabase(array $match, string $winner): void
+    {
+        $player1ID = $this->getPlayerID($match['player1']['name']);
+        $player2ID = $this->getPlayerID($match['player2']['name']);
+        $winnerID = $this->getPlayerID($match[$winner]['name']);
+
+        Game::create([
+            'player1' => $player1ID,
+            'player2' => $player2ID,
+            'winner' => $winnerID,
+        ]);
+    }
+
+    private function getPlayerID(string $playerName): int
+    {
+        $player = Player::where('name', $playerName)->first();
+
+        if (!$player) {
+            $player = Player::create(['name' => $playerName]);
+        }
+
+        return $player->id;
     }
 }
