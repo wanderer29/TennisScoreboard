@@ -9,7 +9,11 @@
 </head>
 <body>
 <header>
-    New match
+    <nav class="navbar">
+        <a href="{{ route('home_page') }}">Home</a>
+        <a href="{{ route('new-match.create') }}">New Match</a>
+        <a href="{{ route('matches.index') }}">Played Matches</a>
+    </nav>
 </header>
 <div class="form-container">
     <form action="{{ route('new-match.store') }}" method="POST">
@@ -28,12 +32,7 @@
             <p style="color:red">{{ $error }}</p>
         @endif
     </form>
-    <button onclick="window.location.href='{{ route('home_page') }}'">
-        Home page
-    </button>
-    @if (isset($result))
-        <p>{{$result}}</p>
-    @endif
+
 </div>
 <footer>
     author: https://github.com/wanderer29

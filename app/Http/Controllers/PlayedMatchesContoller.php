@@ -17,4 +17,17 @@ class PlayedMatchesContoller extends Controller
 
         return view('played_matches_page', compact('games'));
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $games = Game::whereHas('getPlayer1Name', function ($q) use ($query) {
+            $q->where('name', 'LIKE', '%' . $query . '%');
+        })->orWhereHas('getPlayer2Name', function ($q) use ($query) {
+            $q->where('name', 'LIKE', '%' . $query . '%');
+        })->paginate(5);
+
+        return view('played_matches_page', ['games' => $games]);
+    }
 }

@@ -13,9 +13,22 @@
 </head>
 <body>
 <header>
-    Played matches page
+    <nav class="navbar">
+        <a href="{{ route('home_page') }}">Home</a>
+        <a href="{{ route('new-match.create') }}">New Match</a>
+        <a href="{{ route('matches.index') }}">Played Matches</a>
+    </nav>
 </header>
+
+<div class="search-container">
+    <form action="{{ route('matches.search') }}" method="GET">
+        <input type="text" name="query" placeholder="Search by player name" required>
+        <button type="submit">Search</button>
+    </form>
+</div>
+
 <div class="games">
+    <h2>Played matches</h2>
     <div class="gamesTitle">
         <div>Player 1</div>
         <div>Player 2</div>

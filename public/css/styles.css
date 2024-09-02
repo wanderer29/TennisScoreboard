@@ -9,9 +9,30 @@ header {
     background-color: #1a1a2e;
     color: #FFFFFF;
     display: flex;
-    font-size: 30px;
     justify-content: center;
     align-items: center;
+}
+
+.navbar {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar a {
+    color: #FFFFFF;
+    text-decoration: yellow;
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.navbar a:hover {
+    background-color: #33334d;
+}
+
+.navbar a.active {
+    background-color: #55557d;
 }
 /*End Header*/
 
@@ -118,7 +139,7 @@ button {
 
 /*Played matches page styles*/
 .games {
-    height: 70vh;
+    height: 62vh;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -166,6 +187,23 @@ button {
 
 .pagination {
     margin: 20px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.search-container button {
+    padding: 10px 20px;
+    font-size: 12px;
+    background-color: #1a1a2e;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    height: 35px;
 }
 
 /*End played matches page styles*/

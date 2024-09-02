@@ -9,7 +9,11 @@
 </head>
 <body>
 <header>
-    Match score page
+    <nav class="navbar">
+        <a href="{{ route('home_page') }}">Home</a>
+        <a href="{{ route('new-match.create') }}">New Match</a>
+        <a href="{{ route('matches.index') }}">Played Matches</a>
+    </nav>
 </header>
 <div class="matchScore">
     <div class="scoreboard">
