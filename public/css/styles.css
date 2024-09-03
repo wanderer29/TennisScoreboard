@@ -209,6 +209,51 @@ button {
 
 /*End played matches page styles*/
 
+/*Finished match page styles*/
+
+.finished-match {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.finished-match h2 {
+    margin-top: 40px;
+}
+
+.finished-match h3 {
+    font-weight: bold;
+    margin-top: 20px;
+    color: #1a1a2e;
+}
+
+.match-result-table {
+    border-collapse: collapse;
+    width: 80%;
+    max-width: 800px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.match-result-table th, .match-result-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.match-result-table th {
+    background-color: #1a1a2e;
+    color: #FFFFFF;
+}
+
+.match-result-table td {
+    background-color: #f9f9f9;
+}
+
+/*End finished match page styles*/
+
 /*Footer*/
 footer {
     height: 15vh;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use App\Models\Player;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Transport\ResendTransport;
 use Illuminate\Support\Facades\Cache;
@@ -16,7 +17,7 @@ class MatchScoreController extends Controller
         $match = Cache::get('current_match');
     }
 
-    public function store(Request $request): View
+    public function store(Request $request): View|RedirectResponse
     {
         $match = Cache::get('current_match');
 
@@ -78,14 +79,14 @@ class MatchScoreController extends Controller
         if ($match[$winner]['sets'] >= 2) {
             $this->saveMatchToDatabase($match, $winner);
             Cache::forget('current_match');
-            return view('home_page');
+            session()->put('match_result', $match);
+            session()->put('winner', $winner);
+            return redirect()->route('finished-match.result');
         }
 
         Cache::set('current_match', json_encode($match));
 
         return view('match_score_page', ['match' => $match]);
-
-
     }
 
     private function getOpponent($player): string
@@ -115,5 +116,13 @@ class MatchScoreController extends Controller
         }
 
         return $player->id;
+    }
+
+    public function showMatchResult(): View
+    {
+        $match = session()->get('match_result');
+        $winner = session()->get('winner');
+
+        return view('finished_match_page', ['match' => $match, 'winner' => $winner]);
     }
 }
