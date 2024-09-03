@@ -33,12 +33,14 @@ class NewMatchController extends Controller
                     'sets' => 0,
                     'games' => 0,
                     'points' => 0,
+                    'advantage' => false,
                 ],
                 'player2' => [
                     'name' => $data['name2'],
                     'sets' => 0,
                     'games' => 0,
                     'points' => 0,
+                    'advantage' => false,
                 ],
             ];
 

@@ -20,36 +20,72 @@ class MatchScoreController extends Controller
     {
         $match = Cache::get('current_match');
 
-        if (!is_array($match)){
+        if (!is_array($match)) {
             $match = json_decode($match, true);
         }
 
         $winner = $request->input('winner');
+        $opponent = $this->getOpponent($winner);
 
-        $match[$winner]['points']++;
 
-        if ($match[$winner]['points'] >= 4 && $match[$winner]['points'] - $match[$this->getOpponent($winner)]['points'] >= 2) {
-            $match[$winner]['games']++;
-            $match[$winner]['points'] = 0;
-            $match[$this->getOpponent($winner)]['points'] = 0;
+        if ($match['player1']['games'] == 6 && $match['player2']['games'] == 6) { //Time-break logic
+            $match[$winner]['points']++;
+
+            if ($match[$winner]['points'] >= 7 && $match[$winner]['points'] - $match[$opponent]['points'] >= 2) {
+                $match[$winner]['sets']++;
+                $match['player1']['points'] = 0;
+                $match['player2']['points'] = 0;
+                $match['player1']['games'] = 0;
+                $match['player2']['games'] = 0;
+            }
+        } else { // Points calc logic
+            if ($match[$winner]['points'] == 0) {
+                $match[$winner]['points'] = 15;
+            } elseif ($match[$winner]['points'] == 15) {
+                $match[$winner]['points'] = 30;
+            } elseif ($match[$winner]['points'] == 30) {
+                $match[$winner]['points'] = 40;
+            } elseif ($match[$winner]['points'] == 40) {
+                if ($match[$opponent]['points'] == 40) {
+                    if ($match[$winner]['advantage'] == false) {
+                        $match[$winner]['advantage'] = true;
+                    } elseif ($match[$winner]['advantage'] == true) {
+                        $match[$winner]['games']++;
+                        $match[$winner]['points'] = 0;
+                        $match[$opponent]['points'] = 0;
+                        $match[$winner]['advantage'] = false;
+                        $match[$opponent]['advantage'] = false;
+
+                    }
+                } else {
+                    $match[$winner]['games']++;
+                    $match[$winner]['points'] = 0;
+                    $match[$opponent]['points'] = 0;
+                    $match[$winner]['advantage'] = false;
+                    $match[$opponent]['advantage'] = false;
+                }
+            }
         }
 
-        if ($match[$winner]['games'] >= 6 && $match[$winner]['games'] - $match[$this->getOpponent($winner)]['games'] >= 2) {
+        //Set check
+        if ($match[$winner]['games'] >= 6 && $match[$winner]['games'] - $match[$opponent]['games'] >= 2) {
             $match[$winner]['sets']++;
             $match[$winner]['games'] = 0;
-            $match[$this->getOpponent($winner)]['games'] = 0;
+            $match[$opponent]['games'] = 0;
         }
 
-        if ($match[$winner]['sets'] >= 3) {
+        //Finish game test
+        if ($match[$winner]['sets'] >= 2) {
             $this->saveMatchToDatabase($match, $winner);
             Cache::forget('current_match');
-
             return view('home_page');
         }
 
         Cache::set('current_match', json_encode($match));
 
         return view('match_score_page', ['match' => $match]);
+
+
     }
 
     private function getOpponent($player): string

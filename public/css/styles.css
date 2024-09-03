@@ -6,6 +6,7 @@
 /*Header*/
 header {
     height: 15vh;
+    font-size: 18px;
     background-color: #1a1a2e;
     color: #FFFFFF;
     display: flex;
