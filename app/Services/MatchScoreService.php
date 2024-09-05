@@ -89,7 +89,7 @@ class MatchScoreService
 
     private function isSetsCalcLogic(array $match, string $winner, string $opponent): bool
     {
-        if ($match[$winner]['games'] >= 6 && $match[$winner]['games'] - $match[$opponent]['games'] >= 2) return true;
+        if ($match[$winner]['games'] >= 6 && ($match[$winner]['games'] - $match[$opponent]['games'] >= 2)) return true;
         return false;
     }
 

@@ -61,7 +61,7 @@ class MatchScoreTest extends TestCase
 
     public function testSetCount()
     {
-        //What one player have 6 games and opponent have 4 or less, player 1 win set
+        //When one player have 6 games and opponent have 4 or less, player 1 win set
 
         $match = [
             'player1' => ['points' => 40, 'games' => 6, 'sets' => 0, 'advantage' => false],
@@ -79,6 +79,25 @@ class MatchScoreTest extends TestCase
         $this->assertEquals(0, $match['player2']['games']);
     }
 
+    public function testSetCountThenDifferenceInPointsLessTwo()
+    {
+        //When one player have ant least 6 games and difference in points with opponent less two
+        //games, player 1 won't win set
 
+        $match = [
+            'player1' => ['points' => 40, 'games' => 7, 'sets' => 0, 'advantage' => false],
+            'player2' => ['points' => 0, 'games' => 7, 'sets' => 0, 'advantage' => false],
+        ];
+
+        $service = new MatchScoreService();
+        $match = $service->scoreCalcLogic($match, 'player1');
+
+        $this->assertEquals(0, $match['player1']['sets']);
+        $this->assertEquals(0, $match['player2']['sets']);
+        $this->assertEquals(0, $match['player1']['points']);
+        $this->assertEquals(8, $match['player1']['games']);
+        $this->assertEquals(0, $match['player2']['points']);
+        $this->assertEquals(7, $match['player2']['games']);
+    }
 
 }
