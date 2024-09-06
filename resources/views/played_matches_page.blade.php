@@ -22,7 +22,7 @@
 
 <div class="search-container">
     <form action="{{ route('matches.search') }}" method="GET">
-        <input type="text" name="query" placeholder="Search by player name" required>
+        <input type="text" name="query" value="{{ request('query') }}" placeholder="Search by player name" required>
         <button type="submit">Search</button>
     </form>
 </div>

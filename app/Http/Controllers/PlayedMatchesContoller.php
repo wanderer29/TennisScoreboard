@@ -28,6 +28,8 @@ class PlayedMatchesContoller extends Controller
             $q->where('name', 'LIKE', '%' . $query . '%');
         })->paginate(5);
 
+        $games->appends(['query' => $query]);
+
         return view('played_matches_page', ['games' => $games]);
     }
 }

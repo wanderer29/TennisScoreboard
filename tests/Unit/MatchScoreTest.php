@@ -81,7 +81,7 @@ class MatchScoreTest extends TestCase
 
     public function testSetCountThenDifferenceInPointsLessTwo()
     {
-        //When one player have ant least 6 games and difference in points with opponent less two
+        //When one player have at least 6 games and difference in points with opponent less two
         //games, player 1 won't win set
 
         $match = [
