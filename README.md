@@ -13,6 +13,14 @@ For simplicity, it is assumed that each match is played according to the followi
 - The match is played up to two sets (best of 3)
 - When the score in the set is 6/6, a tie-break is played up to 7 points.
 
+## Features
+- PHP 8.2
+- Laravel framework 11.20
+- Predis 2.2.2
+- HTML/CSS
+- MySql 9.0
+- Unit Tests
+
 ## Application interface
 - Home page
   - Links leading to new match pages and a list of completed matches
@@ -41,3 +49,6 @@ For simplicity, it is assumed that each match is played according to the followi
 - At 6-6, a tiebreak begins instead of a regular game
 - If player 1 have 6 games and opponent have 4 or less, player 1 win set
 - If player 1 have at least 6 games and difference in points with opponent less two games, player 1 won't win set
+
+The application is now available at: http://194.58.126.128/
+
