@@ -50,5 +50,5 @@ For simplicity, it is assumed that each match is played according to the followi
 - If player 1 have 6 games and opponent have 4 or less, player 1 win set
 - If player 1 have at least 6 games and difference in points with opponent less two games, player 1 won't win set
 
-The application is now available at: http://194.58.126.128/
+The application is now available at: http://194.58.126.91/
 
